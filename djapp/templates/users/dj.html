@@ -1,0 +1,71 @@
+{% extends 'main/index.html' %}
+
+	{% block title %} 
+		{% if pet %}
+		{{ pet|length }} ▶ {{pet.0.track}} 
+		{% else %}
+			FAUTUNES :: newemage.com.mx PlayList
+		{% endif %}
+	{% endblock %}
+
+
+{% block cabecera %}
+	<!--<META HTTP-EQUIV="REFRESH" CONTENT="30;URL={% url get_peticiones_view %}"/>-->
+{% endblock cabecera %}
+	
+{% block contenido %}
+
+<div class="container-fluid">
+{% for p in pet  %}
+{% cycle 'row1' 'row2' as rowcolors silent %}
+
+	{% if forloop.first %}
+		<div id="actual" class="row-fluid track {{ rowcolors }} ">
+			<div class="span2 user_cont">
+				<h5><i class="icon-play-circle"></i> {{p.user}}</h5>
+			</div>
+	{% else %}
+		<div class="row-fluid track {{ rowcolors }}">
+			<div class="span2 user_cont">
+				<h5></i> {{p.user}}</h5>
+			</div>
+	{% endif %}
+	<div class="span2">
+		<h5>{{p.date|date:"M d, H:m:s"}}</h5>
+	</div>
+	<div class="span3">
+		<h5>{{p.track}}</h5>
+	</div>
+	<div class="span2">
+		<h5>{{p.artist}}</h5>
+	</div>
+	<div class="span1">
+		{% if p.url %}
+			<h5><span class="label label-success"><a class="track_url" target="_blank" href="{{p.url}}"><i class="icon-hand-right icon-white"></i> Go to Track</a></span></h5>
+		{% else %}
+			<h6 class="no_url"><i class='icon-ban-circle'></i></h6>
+		{% endif %}
+	</div>
+	<div class="span1">
+		{% if p.video_url %}
+			<h5><span class="label label-info"><a class="video_url" target="_blank" href="{{p.video_url}}">Go to Video</a></span></h5>
+		{% else %}
+			<h6 class="no_url"><i class='icon-ban-circle'></i></h6>
+		{% endif %}
+	</div>
+	<div class="span1">
+		<h6>
+			<form action="." method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="id" value="{{p.id}}">
+				<input class="btn btn-mini btn-info mybtn" type="submit" value="&crarr;">
+			</form>
+		</h6>
+	</div>
+</div>
+{% empty %}
+	No Songs in List
+{% endfor %}
+</div>
+
+{% endblock contenido %}

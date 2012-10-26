@@ -1,0 +1,74 @@
+
+
+/* ==========================================================================
+   Author's  Roberto Urita @robertuj custom styles
+   ========================================================================== */
+#frmPetition{
+	width: 260px;
+	margin: 0px auto;
+}
+.track{
+	padding: 17px 0px 10px 0px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+.row2{
+	background-color: #f2f2f2;
+}
+.track_url,.video_url{
+	color: white;
+	text-align: center;
+}
+.track_url:hover,.video_url:hover{
+	color: white;
+	font-weight: bold!important;
+}
+
+.no_url{
+	text-align: center;
+}
+
+.mybtn{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.user_cont{
+	padding-left: 4px;
+}
+
+@media (max-width: 480px) { 
+
+	.track > div{
+		border-bottom: 1px solid #ccc;
+	}
+	.track{
+		margin-bottom: 10px;
+		border: 1px solid black;
+		border-radius: 5px;
+		padding: 3px;
+	}
+
+}
+#actual{
+	background-color: #72d9ff!important;
+
+}
+
+#cuerpo tr{
+	cursor: pointer;
+}
+
+.selec_tr{
+	background-color: #e2e2e2;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+

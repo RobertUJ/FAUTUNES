@@ -1,0 +1,57 @@
+{% extends 'main/index.html' %}
+
+
+
+
+	{% block title %} 
+		{% if pet %}
+		{{ pet|length }} ▶ {{pet.0.track}} 
+		{% else %}
+			FAUTUNES :: newemage.com.mx PlayList
+		{% endif %}
+	{% endblock %}
+
+{% block contenido %}
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span8 offset2">
+
+
+
+
+<div class="well">
+	
+	<form action="." method="POST" id="frmBuscar"  class="form-search">
+		{% csrf_token %}
+	  <input type="hidden" value="{{csrf_token}}" name="token" id="idToken">
+	  <input type="text" class="input-medium search-query" id='txtBuscar' placeholder='Search your fucking tracks'>
+	  {# <button type="submit" class="btn" id="btnBuscar">Search</button> #}
+	</form>
+	<a target="_blank" class="btn btn-warning" href="http://grooveshark.com/">Go to Groveshark</a>
+	<a target="_blank" class="btn btn-danger" href="http://youtube.com/">Go to Youtube</a>
+
+<table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>Track</th>
+                  <th>Artist</th>
+                  <th>Url</th>
+                </tr>
+              </thead>
+              <tbody id="cuerpo">
+               
+              </tbody>
+</table>
+
+<hr>
+<form  id="frmPetition" action="." method="POST" class="form-horizontal">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit petition">
+</form>
+
+</div>
+</div>
+</div>
+</div>	
+{% endblock contenido %}
